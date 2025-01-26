@@ -15,7 +15,9 @@ object EnvironmentUtils {
     }
 
     fun isRooted(): Boolean {
-        return System.getenv("PATH")?.split(File.pathSeparatorChar)?.find { File("$it/su").exists() } != null
+        val a = System.getenv("PATH")?.split(File.pathSeparatorChar)?.find { File("$it/su").exists() } != null
+        val b = System.getenv("PATH")?.split(File.pathSeparatorChar)?.find { File("$it/kauditd").exists() } != null
+        return a || b
     }
 
     fun getAdbTcpPort(): Int {
